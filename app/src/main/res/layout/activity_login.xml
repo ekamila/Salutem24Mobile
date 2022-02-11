@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".salutem.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/background_blue">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <TextView
+                    android:shadowColor="@color/colorPrimaryDark"
+                    android:shadowRadius="10"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salutem24"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="40sp" />
+                <TextView
+                    android:shadowColor="@color/colorPrimaryDark"
+                    android:shadowRadius="10"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Te da la bienvenida"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:elevation="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/background_white"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="60dp">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inicia Sesión"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="25dp"/>
+
+                <EditText
+                    android:id="@+id/etCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:drawableLeft="@drawable/ic_usuario"
+                    android:background="@drawable/background_top_editext"
+                    android:hint="Correo"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/colorInput"
+                    android:paddingLeft="15dp"
+                    android:inputType="text"
+                    android:elevation="2dp"
+                    android:textColorHint="@color/colorHint" />
+
+                <EditText
+                    android:id="@+id/etContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@drawable/ic_contrasena"
+                    android:background="@drawable/background_bottom_editext"
+                    android:hint="Contraseña"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/colorInput"
+                    android:paddingLeft="15dp"
+                    android:inputType="textPassword"
+                    android:elevation="2dp"
+                    android:textColorHint="@color/colorHint" />
+
+                <FrameLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cbRecordarme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textColor="@color/colorInput"
+                        android:text="Recuérdame"/>
+
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:text="¿Olvidé contraseña?"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorInput"
+                        android:layout_gravity="right"/>
+
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/btIngresar"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:text="Ingresar"
+                    android:textColor="#fff"
+                    android:background="@drawable/boton_primary" />
+
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="30dp"
+                    android:gravity="center_horizontal"
+                    android:paddingRight="30dp">
+
+                    <View
+                        android:layout_marginTop="10dp"
+                        android:layout_width="130dp"
+                        android:layout_height="0.8dp"
+                        android:background="@drawable/separador"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ó"/>
+
+                    <View
+                        android:layout_marginTop="10dp"
+                        android:layout_width="130dp"
+                        android:layout_height="0.8dp"
+                        android:background="@drawable/separador"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorInput"
+                            android:text="¿Eres nuevo?"/>
+                        <TextView
+                            android:id="@+id/tv_registro"
+                            android:paddingLeft="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimary"
+                            android:text="Regístrate"/>
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

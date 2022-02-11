@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:maxWidth="300dp"
+    android:minWidth="300dp"
+    android:layout_height="475dp"
+    android:background="@drawable/background_orange"
+    android:layout_gravity="center"
+    >
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txtClose"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:textColor="@color/colorWhite"
+                android:text="X"
+                android:textStyle="bold"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:background="@drawable/cercle_background"
+                />
+
+            <LinearLayout
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:elevation="10dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/profile_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/fotoperfil"
+                    app:civ_border_width="1dp"
+                    app:civ_border_color="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/tvNombreDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:id="@+id/tvEspecialidadDoc"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/colorWhite"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:minHeight="300dp"
+                android:elevation="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/background_white"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp">
+
+
+                <LinearLayout
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CMP:"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorblueDark"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvCmp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorInput"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RNE:"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorblueDark"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvRne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorInput"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ESTUDIOS:"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorblueDark"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/content_estudios"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+
+                    <!--LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_marginBottom="1dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_marginRight="5dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="8dp"
+                                    android:layout_height="8dp"
+                                    android:src="@drawable/ic_vineta"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bachiller en medicina"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorInput"
+                                    />
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Universidad Peruana Cayetano Heredia"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginBottom="1dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_marginRight="5dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="8dp"
+                                    android:layout_height="8dp"
+                                    android:src="@drawable/ic_vineta"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bachiller en medicina"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorInput"
+                                    />
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Universidad Peruana Cayetano Heredia"
+                                />
+
+                        </LinearLayout>
+                    </LinearLayout-->
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EXPERIENCIA LABORAL:"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorblueDark"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/content_experiencia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+                    <!--LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_marginBottom="1dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_marginRight="5dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="8dp"
+                                    android:layout_height="8dp"
+                                    android:src="@drawable/ic_vineta"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Maestro en Medicina"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorInput"
+                                    />
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Universidad Peruana Cayetano Heredia"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginBottom="1dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_marginRight="5dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="8dp"
+                                    android:layout_height="8dp"
+                                    android:src="@drawable/ic_vineta"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Maestro en Medicina"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorInput"
+                                    />
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Universidad Peruana Cayetano Heredia"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginBottom="1dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_marginRight="5dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="8dp"
+                                    android:layout_height="8dp"
+                                    android:src="@drawable/ic_vineta"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Maestro en Medicina"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorInput"
+                                    />
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Universidad Peruana Cayetano Heredia"
+                                />
+
+                        </LinearLayout>
+                    </LinearLayout-->
+                </LinearLayout>
+            </LinearLayout>
+            <!--<TextView
+                android:text="Currículum"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>-->
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

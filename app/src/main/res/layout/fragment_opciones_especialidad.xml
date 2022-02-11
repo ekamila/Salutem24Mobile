@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.OpcionesEspecialidadFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/background_blue">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="110dp">
+
+                <TextView
+                    android:shadowColor="@color/colorPrimaryDark"
+                    android:shadowRadius="10"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salutem24"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="35sp" />
+                <TextView
+                    android:shadowColor="@color/colorPrimaryDark"
+                    android:shadowRadius="10"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selecciona una especialidad"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:elevation="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/background_white"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="30dp">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Especialidades"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="25dp"/>
+
+                <LinearLayout
+                    android:id="@+id/content_especialidades"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

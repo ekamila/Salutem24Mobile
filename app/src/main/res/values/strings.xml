@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Salutem24</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Pacientes">
+        <item>Seleccione un paciente</item>
+        <item>Torres Cardenas Carlos</item>
+        <item>Meza Caballero Julio</item>
+        <item>Santacruz Medina Fernando</item>
+    </string-array>
+    <string-array name="Genero">
+        <item>Seleccione su género</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="Medicos">
+        <item>Todos los médicos</item>
+        <item>Torres Cardenas Carlos</item>
+        <item>Meza Caballero Julio</item>
+        <item>Santacruz Medina Fernando</item>
+    </string-array>
+</resources>
