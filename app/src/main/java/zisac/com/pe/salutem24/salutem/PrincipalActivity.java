@@ -243,4 +243,5 @@ public class PrincipalActivity extends AppCompatActivity
     public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
         Log.e("1", "");
     }
+
 }

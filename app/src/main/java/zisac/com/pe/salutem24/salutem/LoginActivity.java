@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     intent.putExtra(Constantes.USUARIO, usuario);
                     startActivity(intent);
                     finish();
-                    Toast.makeText(LoginActivity.this, usuario.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(LoginActivity.this, usuario.getMessage(), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(LoginActivity.this, usuario.getMessage(), Toast.LENGTH_LONG).show();
                 }

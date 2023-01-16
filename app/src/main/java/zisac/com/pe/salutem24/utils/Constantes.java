@@ -1,7 +1,8 @@
 package zisac.com.pe.salutem24.utils;
 
 public class Constantes {
-    public static final String HTTP_CABECERA = "https://190.117.64.238/SalutemApi/";
+    public static final String HTTP_CABECERA = "https://clinicameditec.com/clinicameditecAPI/";
+    //public static final String HTTP_CABECERA = "https://localhost:44339/";
     public static final String URL_LOGIN = "cuenta/login";
     public static final String URL_VALIDAR_CUENTA = "Cuenta/";
     public static final String URL_INSERTAR = "cuenta/insertar";
@@ -15,6 +16,8 @@ public class Constantes {
     public static final String URL_CONSULTA_LISTAR = "ConsultaMedica/Listar?usuario=";
     public static final String URL_CONSULTA_INMEDIATA = "Turno/ListarConsultaInmediata";
     public static final String URL_CONSULTA = "ConsultaMedica/Traer/";
+    public static final String URL_CONSULTA_SESION = "ConsultaMedica/TraerSesion?consulta_id=";
+    public static final String URL_INSERTAR_PAGO = "Pago/Insertar/";
     public static final int OPCIONES_MENU=1;
     public static final int OPCIONES_ESPECIALIDADES=2;
     public static final int OPCION_CONSULTA_PROGRAMADA=3;
@@ -22,6 +25,8 @@ public class Constantes {
     public static final int OPCION_DATOS_PACIENTES=5;
     public static final int OPCION_PAGOS=6;
     public static final int OPCION_CONSULTA_ONLINE=7;
+
+    public static final String API_KEY = "47436881";
 
     public static final int TIEMPO_REFRESH_ALERT = 300000;
     public static final String PREF_UNIQUE_ID = "PREF_UNIQUE_ID";

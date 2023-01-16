@@ -34,7 +34,7 @@ public class Utils {
         try {
             final LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
             if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                Toast.makeText(context, "Ativar GPS", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Activar GPS", Toast.LENGTH_SHORT).show();
                 gpsActivo = false;// Call your Alert message
             }
         }catch (Exception e){
@@ -131,7 +131,7 @@ public class Utils {
             }
         }catch(JSONException e){
             //Log.e("JSON", "Falló la conversión a JSONObject");
-            //Log.e("ERROR",Log.getStackTraceString(e));
+            Log.e("Errores:",Log.getStackTraceString(e));
             return null;
         }
 
@@ -169,7 +169,7 @@ public class Utils {
                 is = entity.getContent();
             }
         } catch (Exception e) {
-            //Log.e("ERROR", Log.getStackTraceString(e));
+            Log.e("Errores:", Log.getStackTraceString(e));
             return null;
         }
 
@@ -186,7 +186,7 @@ public class Utils {
             }
         } catch(Exception e){
             //Log.e("JSON", "Falló la descarga de archivo json");
-            //Log.e("ERROR",Log.getStackTraceString(e));
+            Log.e("Errores:",Log.getStackTraceString(e));
             return null;
         }
         return result;

@@ -16,12 +16,14 @@ import java.util.ArrayList;
 
 import zisac.com.pe.salutem24.entity.AnfitrionEntity;
 import zisac.com.pe.salutem24.entity.ConsultaEntity;
+import zisac.com.pe.salutem24.entity.ConsultaSesionEntity;
 import zisac.com.pe.salutem24.entity.CurriculumEntity;
 import zisac.com.pe.salutem24.entity.EspecialidadEntity;
 import zisac.com.pe.salutem24.entity.EstudiosEntity;
 import zisac.com.pe.salutem24.entity.ExperienciaEntity;
 import zisac.com.pe.salutem24.entity.MedicoEntity;
 import zisac.com.pe.salutem24.entity.PacienteEntity;
+import zisac.com.pe.salutem24.entity.PagoEntity;
 import zisac.com.pe.salutem24.entity.TurnoDetalleEntity;
 import zisac.com.pe.salutem24.entity.TurnoEntity;
 import zisac.com.pe.salutem24.entity.UsuarioEntity;
@@ -86,7 +88,7 @@ public class URLDaoImplement implements URLDaoInterface {
                 }
             }
         }catch(Exception e){
-            //Log.getStackTraceString(e);
+            Log.getStackTraceString(e);
             Log.e("ExpectionLogin","" + e.getMessage());
             usuarioEntity = null;
         }
@@ -507,7 +509,7 @@ public class URLDaoImplement implements URLDaoInterface {
     }
 
     @Override
-    public String postInsertarGet(String pacienteId, String turnoDetalleId, String inmediata) {
+    public String postInsertarGet(String pacienteId, String turnoDetalleId, int pago_id, String inmediata, String importe, String fecha_consulta) {
         String cadena=null, mensaje, consultaId, isSucces;
 
         try{
@@ -517,7 +519,11 @@ public class URLDaoImplement implements URLDaoInterface {
             try {
                 joConsulta.put("paciente_id", Integer.parseInt(pacienteId));
                 joConsulta.put("turno_detalle_id", Integer.parseInt(turnoDetalleId));
+                joConsulta.put("pago_id", pago_id);
                 joConsulta.put("inmediata", inmediata.equals(Constantes.RESERVA_INMEDIATA));
+                joConsulta.put("importe", importe);
+                joConsulta.put("fecha_consulta", fecha_consulta);
+
                 //joConsulta.put("inmediata", false);
             } catch (JSONException e) {
                 joConsulta = null;
@@ -755,6 +761,59 @@ public class URLDaoImplement implements URLDaoInterface {
         }
 
         return consultaEntity;
+    }
+
+    public ConsultaSesionEntity getConsultaSesion(String consultaId) {
+        ConsultaSesionEntity consultaSesionEntity;
+        try{
+            consultaSesionEntity = new ConsultaSesionEntity();
+            String url = Constantes.HTTP_CABECERA + Constantes.URL_CONSULTA_SESION + consultaId;
+            JSONObject jsonObject = utils.getJSONfromURL(url);
+
+            JSONObject response = jsonObject.getJSONObject("data");
+
+            if(response.length()>0){
+                consultaSesionEntity.setConsulta_id(Integer.parseInt(utils.getValueStringOrNull(response,"consulta_id")));
+                consultaSesionEntity.setSesion_sala(utils.getValueStringOrNull(response,"sesion_sala"));
+                consultaSesionEntity.setToken_sala(utils.getValueStringOrNull(response,"token_sala"));
+            } else {
+                consultaSesionEntity = new ConsultaSesionEntity();
+            }
+        }
+        catch (Exception e){
+            Log.getStackTraceString(e);
+            consultaSesionEntity = null;
+        }
+        return consultaSesionEntity;
+    }
+
+    public int postInsertarPago(PagoEntity pago) {
+        int pago_id = 0;
+        try {
+
+            String url = Constantes.HTTP_CABECERA + Constantes.URL_INSERTAR_PAGO;
+            JSONObject json = new JSONObject();
+            try {
+                json.put("numero_pago", pago.getPago_numero());
+
+                //joConsulta.put("inmediata", false);
+            } catch (JSONException e) {
+                json = null;
+                e.printStackTrace();
+            }
+            String result = Utils.POST(url, json);
+            JSONObject datosInsert=null;
+            if(result!=null) {
+                if(!result.equals("")) {
+                    datosInsert = new JSONObject(result);
+                    pago_id = Integer.parseInt(utils.getValueStringOrNull(datosInsert, "pago_id"));
+                }
+            }
+        } catch(Exception e){
+            //Log.getStackTraceString(e);
+            Log.e("ExepInsertPaciente","" + e.getMessage());
+        }
+        return pago_id;
     }
 }
 

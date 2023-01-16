@@ -97,8 +97,8 @@ public class OpcionesEspecialidadFragment extends Fragment {
         for(int i=0; i<total; i++){
             final EspecialidadEntity especialidad = especialidades.get(i);
 
-            LinearLayout.LayoutParams paramFila = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 90);
-            paramFila.setMargins(10,10,10,10);
+            LinearLayout.LayoutParams paramFila = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 120);
+            paramFila.setMargins(10,20,10,10);
             LinearLayout fila = new LinearLayout(getActivity());
 
             fila.setOrientation(LinearLayout.HORIZONTAL);
@@ -176,12 +176,12 @@ public class OpcionesEspecialidadFragment extends Fragment {
             if(medico != null) {
                 if (medico.getIsSuccess().equals("true")) {
                     notifyOptionSelected(Constantes.OPCIONES_HORARIOS, medicos);
-                    Toast.makeText(getContext(), medico.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), medico.getMessage(), Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getContext(), "No se pudo listar, intente mas tarde", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "No se pudo listar, intente más tarde", Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(getContext(), "No se pudo listar, intente mas tarde", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "No se pudo listar, intente más tarde", Toast.LENGTH_LONG).show();
             }
         }
     }

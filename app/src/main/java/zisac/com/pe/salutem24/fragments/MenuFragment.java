@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ import zisac.com.pe.salutem24.entity.TurnoEntity;
 import zisac.com.pe.salutem24.entity.UsuarioEntity;
 import zisac.com.pe.salutem24.salutem.Registro;
 import zisac.com.pe.salutem24.utils.Constantes;
+import zisac.com.pe.salutem24.utils.DateInputMask;
 import zisac.com.pe.salutem24.utils.Utils;
 
 /**
@@ -218,9 +220,9 @@ public class MenuFragment extends Fragment {
                 if (especialidad.getIsSuccess().equals("true")) {
                     notifyOptionSelected(irFragment, especialidades);
                     //Toast.makeText(getContext(), "Se listo satisfactoriamente", Toast.LENGTH_LONG).show();
-                    Toast.makeText(getContext(), especialidad.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), especialidad.getMessage(), Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getContext(), "No se pudo listar, intente mas tarde", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Intente más tarde", Toast.LENGTH_LONG).show();
                 }
             } else {
                 Toast.makeText(getContext(), "No hay especialistas", Toast.LENGTH_LONG).show();

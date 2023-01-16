@@ -4,7 +4,7 @@
     android:maxWidth="300dp"
     android:minWidth="300dp"
     android:layout_height="475dp"
-    android:background="@drawable/background_orange"
+    android:background="@drawable/background_card"
     android:layout_gravity="center"
     >
 

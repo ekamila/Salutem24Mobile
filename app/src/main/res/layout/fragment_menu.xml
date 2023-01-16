@@ -11,6 +11,7 @@
         android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/fragment_menu"
         android:background="@drawable/background_white">
 
         <LinearLayout
@@ -24,7 +25,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="110dp">
 
-                <TextView
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="0dp"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:shadowRadius="10"
+                    android:src="@drawable/logomeditec" />
+                <!--<TextView
                     android:shadowColor="@color/colorPrimaryDark"
                     android:shadowRadius="10"
                     android:shadowDx="2"
@@ -35,10 +46,9 @@
                     android:textColor="@color/colorWhite"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="30dp"
-                    android:textSize="35sp" />
+                    android:textSize="35sp" />-->
                 <TextView
                     android:shadowColor="@color/colorPrimaryDark"
-                    android:shadowRadius="10"
                     android:shadowDx="2"
                     android:shadowDy="5"
                     android:layout_width="wrap_content"
@@ -46,7 +56,7 @@
                     android:text="Selecciona un tipo de cita"
                     android:layout_marginLeft="30dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="16sp"/>
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -59,7 +69,6 @@
                 android:paddingLeft="40dp"
                 android:paddingBottom="40dp"
                 android:paddingTop="40dp">
-
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
@@ -84,7 +93,7 @@
                             android:layout_marginBottom="0dp"
                             android:layout_width="wrap_content"
                             android:layout_height="180dp"
-                            android:src="@drawable/videollamada" />
+                            android:src="@drawable/videollamada_va" />
                     </LinearLayout>
 
 
@@ -138,7 +147,7 @@
                             android:layout_marginBottom="0dp"
                             android:layout_width="wrap_content"
                             android:layout_height="180dp"
-                            android:src="@drawable/inmediata" />
+                            android:src="@drawable/inmediata_va" />
 
                     </LinearLayout>
 
@@ -197,7 +206,7 @@
                             android:layout_marginBottom="0dp"
                             android:layout_width="wrap_content"
                             android:layout_height="180dp"
-                            android:src="@drawable/programadas" />
+                            android:src="@drawable/programadas_va" />
 
                     </LinearLayout>
 

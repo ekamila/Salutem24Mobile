@@ -3,18 +3,24 @@ package zisac.com.pe.salutem24.fragments;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.whiteelephant.monthpicker.MonthPickerDialog;
@@ -28,9 +34,12 @@ import zisac.com.pe.salutem24.dataBase.URLDaoInterface;
 import zisac.com.pe.salutem24.dialog.DatePickerFragment;
 import zisac.com.pe.salutem24.entity.ConsultaEntity;
 import zisac.com.pe.salutem24.entity.PacienteEntity;
+import zisac.com.pe.salutem24.entity.PagoEntity;
 import zisac.com.pe.salutem24.entity.TurnoEntity;
 import zisac.com.pe.salutem24.entity.UsuarioEntity;
 import zisac.com.pe.salutem24.utils.Constantes;
+import zisac.com.pe.salutem24.utils.DateInputMask;
+import zisac.com.pe.salutem24.utils.StringUtils;
 import zisac.com.pe.salutem24.utils.Utils;
 
 /**
@@ -39,13 +48,12 @@ import zisac.com.pe.salutem24.utils.Utils;
 public class PagarConsultaFragment extends Fragment {
 
     OnClickOpcionFragmento optionSelected;
-    EditText et_fecha;
     private View rootView;
     private ArrayList<TurnoEntity> turno;
     private ProgressDialog popup;
     private UsuarioEntity usuario;
     private PacienteEntity paciente;
-    private EditText etMarca, etNroTarjeta, etCodigoSeguridad, etNombreTitular, etApellidoTitular, etCorreoTitular;
+    private EditText et_fecha, etNroTarjeta, etCodigoSeguridad, etNombreTitular, etApellidoTitular, etCorreoTitular;
     private Button btn_pagar;
 
     public interface OnClickOpcionFragmento{
@@ -82,17 +90,19 @@ public class PagarConsultaFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        etMarca = rootView.findViewById( R.id.etMarca );
+
         etNroTarjeta = rootView.findViewById( R.id.etNroTarjeta );
-        et_fecha = rootView.findViewById( R.id.et_fecha_consulta );
+        et_fecha = rootView.findViewById( R.id.et_fecha );
         etCodigoSeguridad = rootView.findViewById(R.id.etCodigoSeguridad);
         etNombreTitular = rootView.findViewById(R.id.etNombreTitular);
         etApellidoTitular = rootView.findViewById(R.id.etApellidoTitular);
         etCorreoTitular = rootView.findViewById(R.id.etCorreoTitular);
         btn_pagar = rootView.findViewById(R.id.btn_pagar);
-
+        et_fecha = rootView.findViewById(R.id.et_fecha);
+        new DateInputMask(et_fecha);
         String monto = turno.get(0).getImporte();
-        btn_pagar.setText(monto);
+
+        btn_pagar.setText("Pagar S/. "+monto);
 
         btn_pagar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,16 +123,37 @@ public class PagarConsultaFragment extends Fragment {
         });
     }
 
+    /*private void LlenarSpinners(View rootView){
+        tarjeta = rootView.findViewById(R.id.etMarca);
+        mes = rootView.findViewById(R.id.et_mes_exp);
+        year = rootView.findViewById(R.id.et_year_exp);
+
+        ArrayAdapter<CharSequence> adapter_t = ArrayAdapter.createFromResource(getActivity(), R.array.tarjetas, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter_m = ArrayAdapter.createFromResource(getActivity(), R.array.mes, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter_y = ArrayAdapter.createFromResource(getActivity(), R.array.year, android.R.layout.simple_spinner_item);
+
+        tarjeta.setAdapter(adapter_t);
+        mes.setAdapter(adapter_m);
+        year.setAdapter(adapter_y);
+    }*/
+
     private class InsertarConsulta extends AsyncTask<String,Void,ConsultaEntity> {
         private String consultaInmediata;
         @Override
         protected ConsultaEntity doInBackground(String... params) {
             String pacienteId=params[0], turnoDetalleId=params[1];
             ConsultaEntity consultaEntity = new ConsultaEntity();
+            PagoEntity pago = new PagoEntity();
+            pago.setPago_numero("PRUEBA8080");
             consultaInmediata =params[2];
+            String importe = turno.get(0).getImporte();
+            String fecha_consulta = turno.get(0).getFechaTurno();
 
             URLDaoInterface dao = new URLDaoImplement();
-            String cadena = dao.postInsertarGet(pacienteId, turnoDetalleId, consultaInmediata); //recogemos todos los pacientes
+
+            int pago_id = dao.postInsertarPago(pago);
+
+            String cadena = dao.postInsertarGet(pacienteId, turnoDetalleId, pago_id, consultaInmediata, importe, fecha_consulta); //recogemos todos los pacientes
             if (cadena != null) {
                 String[] dosValores = cadena.split("-");
                 String isSuccess = dosValores[0];
@@ -187,7 +218,7 @@ public class PagarConsultaFragment extends Fragment {
                 new MonthPickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(int selectedMonth, int selectedYear) {
-                        et_fecha.setText( (selectedMonth+1) + "/" + selectedYear );
+                        //et_fecha.setText( (selectedMonth+1) + "/" + selectedYear );
                     }
                 }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
 
@@ -198,6 +229,50 @@ public class PagarConsultaFragment extends Fragment {
                 .setTitle("Selecciona mes y año")
                 .build()
                 .show();
+    }
+
+    public int RetornaMes(String nombre){
+        int mes;
+        switch (nombre){
+            case "Enero":
+                mes = 1;
+                break;
+            case "Febrero":
+                mes = 2;
+                break;
+            case "Marzo":
+                mes = 3;
+                break;
+            case "Abril":
+                mes = 4;
+                break;
+            case "Mayo":
+                mes = 5;
+                break;
+            case "Junio":
+                mes = 6;
+                break;
+            case "Julio":
+                mes = 7;
+                break;
+            case "Agosto":
+                mes = 8;
+                break;
+            case "Setiembre":
+                mes = 9;
+                break;
+            case "Octubre":
+                mes = 10;
+                break;
+            case "Noviembre":
+                mes = 11;
+                break;
+            case "Diciembre":
+                mes = 12;
+                break;
+            default: mes = 1;
+        }
+        return mes;
     }
 
     private void crearPopUpEspera(){

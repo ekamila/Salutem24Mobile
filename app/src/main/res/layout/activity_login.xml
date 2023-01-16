@@ -21,27 +21,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
 
-                <TextView
+                <ImageView
+                    android:layout_width="350dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
                     android:shadowColor="@color/colorPrimaryDark"
-                    android:shadowRadius="10"
                     android:shadowDx="2"
                     android:shadowDy="5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Salutem24"
-                    android:textColor="@color/colorWhite"
-                    android:layout_marginTop="100dp"
-                    android:layout_marginLeft="30dp"
-                    android:textSize="40sp" />
+                    android:shadowRadius="10"
+                    android:src="@drawable/logomeditec"
+                    android:textColor="@color/colorWhite" />
                 <TextView
                     android:shadowColor="@color/colorPrimaryDark"
-                    android:shadowRadius="10"
                     android:shadowDx="2"
                     android:shadowDy="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Te da la bienvenida"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="20dp"
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp"/>
 

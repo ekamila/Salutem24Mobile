@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -329,9 +330,9 @@ public class ConsultaPragramadaFragment extends Fragment {
             if(consulta != null) {
                 if (consulta.getIsSuccess().equals("true")) {
                     limpiarRecargarView();
-                    Toast.makeText(getContext(), consulta.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), consulta.getMessage(), Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getContext(), "No se pudo listar, intente mas tarde", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "No se pudo listar, intente más tarde", Toast.LENGTH_LONG).show();
                 }
             } else {
                 content_consultas.removeAllViews();
@@ -443,7 +444,7 @@ public class ConsultaPragramadaFragment extends Fragment {
                     consulta.setConsultaInmediata(Constantes.RESERVA_NORMAL);
                     datos.add(consulta);
                     notifyOptionSelected(Constantes.OPCION_CONSULTA_ONLINE, datos);
-
+                    //Log.i("value" , datos.get(0).getConsultaId());
                 }
             });
             if(!selectedEstadoId.equals("1")){

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,12 +28,11 @@
 
                 <TextView
                     android:shadowColor="@color/colorPrimaryDark"
-                    android:shadowRadius="10"
                     android:shadowDx="2"
                     android:shadowDy="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pagar Consultas"
+                    android:text="Pago de Consulta Médica"
                     android:textColor="@color/colorWhite"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="30dp"
@@ -49,31 +49,34 @@
                 android:paddingRight="25dp"
                 android:paddingLeft="25dp"
                 android:paddingTop="30dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:elevation="2dp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1">
 
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:shadowColor="@color/colorPrimaryDark"
+                        android:shadowDx="2"
+                        android:shadowDy="5"
+                        android:shadowRadius="10"
+                        android:textColor="@color/colorWhite"
+                        app:srcCompat="@drawable/logomeditec_azul" />
+                </LinearLayout>
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Datos de la tarjeta"
                     android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="30dp"
                     android:layout_marginBottom="10dp"
                     android:textSize="20dp"/>
-
-                <EditText
-                    android:id="@+id/etMarca"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
-                    android:drawableLeft="@drawable/ic_tarjeta"
-                    android:background="@drawable/background_top_editext"
-                    android:hint="Marca"
-                    android:drawablePadding="8dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorBlack"
-                    android:paddingLeft="15dp"
-                    android:inputType="text"
-                    android:elevation="2dp"
-                    android:textColorHint="@color/colorHint" />
                 <EditText
                     android:id="@+id/etNroTarjeta"
                     android:layout_width="match_parent"
@@ -89,89 +92,96 @@
                     android:inputType="number"
                     android:elevation="2dp"
                     android:textColorHint="@color/colorHint" />
-                <EditText
-                    android:id="@+id/et_fecha_consulta"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:drawableLeft="@drawable/ic_fecha"
-                    android:background="@drawable/background_middle_editext"
-                    android:hint="Fecha expiración"
-                    android:drawablePadding="8dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorBlack"
-                    android:paddingLeft="15dp"
-                    android:inputType="text"
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
                     android:elevation="2dp"
-                    android:textColorHint="@color/colorHint" />
-
-                <EditText
-                    android:id="@+id/etCodigoSeguridad"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:drawableLeft="@drawable/ic_contrasena"
-                    android:background="@drawable/background_bottom_editext"
-                    android:hint="Código de seguridad"
-                    android:drawablePadding="8dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorBlack"
-                    android:paddingLeft="15dp"
-                    android:inputType="number"
-                    android:elevation="2dp"
-                    android:textColorHint="@color/colorHint" />
-
-
-                <TextView
-                    android:layout_marginTop="20dp"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Titular de la tarjeta"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="20dp"/>
-
-                <EditText
-                    android:id="@+id/etNombreTitular"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:drawableLeft="@drawable/ic_usuario"
-                    android:background="@drawable/background_top_editext"
-                    android:hint="Nombre"
-                    android:drawablePadding="8dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorBlack"
-                    android:paddingLeft="15dp"
-                    android:inputType="text"
+                    android:weightSum="2">
+                    <EditText
+                        android:id="@+id/et_fecha"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp"
+                        android:drawableLeft="@drawable/ic_fecha"
+                        android:background="@drawable/background_middle_editext"
+                        android:hint="MM/AA"
+                        android:drawablePadding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:paddingLeft="15dp"
+                        android:inputType="number"
+                        android:elevation="2dp"
+                        android:textColorHint="@color/colorHint"/>
+                    <EditText
+                        android:id="@+id/etCodigoSeguridad"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="5dp"
+                        android:drawableLeft="@drawable/ic_tarjeta"
+                        android:background="@drawable/background_middle_editext"
+                        android:hint="CVV"
+                        android:drawablePadding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:paddingLeft="15dp"
+                        android:inputType="number"
+                        android:elevation="2dp"
+                        android:textColorHint="@color/colorHint"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
                     android:elevation="2dp"
-                    android:textColorHint="@color/colorHint" />
-
-                <EditText
-                    android:id="@+id/etApellidoTitular"
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:drawableLeft="@drawable/ic_apellido"
-                    android:background="@drawable/background_middle_editext"
-                    android:hint="Apellido"
-                    android:drawablePadding="8dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorBlack"
-                    android:paddingLeft="15dp"
-                    android:inputType="text"
-                    android:elevation="2dp"
-                    android:textColorHint="@color/colorHint" />
-
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+                    <EditText
+                        android:id="@+id/etNombreTitular"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp"
+                        android:drawableLeft="@drawable/ic_usuario"
+                        android:background="@drawable/background_middle_editext"
+                        android:hint="Nombre"
+                        android:drawablePadding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:paddingLeft="15dp"
+                        android:inputType="text"
+                        android:elevation="2dp"
+                        android:textColorHint="@color/colorHint"/>
+                    <EditText
+                        android:id="@+id/etApellidoTitular"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/ic_usuario"
+                        android:background="@drawable/background_middle_editext"
+                        android:hint="Apellido"
+                        android:drawablePadding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:paddingLeft="15dp"
+                        android:inputType="text"
+                        android:elevation="2dp"
+                        android:textColorHint="@color/colorHint"/>
+                </LinearLayout>
                 <EditText
                     android:id="@+id/etCorreoTitular"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/ic_correo"
-                    android:background="@drawable/background_bottom_editext"
-                    android:hint="Correo"
+                    android:background="@drawable/background_middle_editext"
+                    android:hint="Correo electrónico"
                     android:drawablePadding="8dp"
                     android:textSize="16sp"
                     android:textColor="@color/colorBlack"
@@ -186,14 +196,33 @@
                     android:shadowDy="5"
                     android:id="@+id/btn_pagar"
                     android:layout_gravity="center"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:text="Pagar S/50.00"
+                    android:text="Pagar S/. 50.00"
                     android:textColor="#fff"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/boton_primary_sm" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:elevation="2dp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:shadowColor="@color/colorPrimaryDark"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:shadowRadius="10"
+                    android:textColor="@color/colorWhite"
+                    app:srcCompat="@drawable/tarjetas" />
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

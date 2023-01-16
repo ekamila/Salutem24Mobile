@@ -185,7 +185,7 @@ public class HorariosFragment extends Fragment {
                         selectedMedicoId = arrayList.get(position).getValorDetalle();
                     }
                 }catch (Exception e){
-                    Log.e("Exxeo","" + e.getMessage());
+                    Log.e("Error ","" + e.getMessage());
                 }
             }
             @Override
