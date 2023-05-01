@@ -1,7 +1,9 @@
 package zisac.com.pe.salutem24.utils;
 
 public class Constantes {
-    public static final String HTTP_CABECERA = "https://clinicameditec.com/clinicameditecAPI/";
+    //public static final String HTTP_CABECERA = "https://clinicameditec.com/clinicameditecAPI/";
+    public static final String HTTP_CABECERA = "https://clinicameditec.com/meditecApiDesa/";
+    public static final String HTTP_WEB = "https://clinicameditec.com/meditecCert/#/";
     //public static final String HTTP_CABECERA = "https://localhost:44339/";
     public static final String URL_LOGIN = "cuenta/login";
     public static final String URL_VALIDAR_CUENTA = "Cuenta/";
@@ -17,7 +19,10 @@ public class Constantes {
     public static final String URL_CONSULTA_INMEDIATA = "Turno/ListarConsultaInmediata";
     public static final String URL_CONSULTA = "ConsultaMedica/Traer/";
     public static final String URL_CONSULTA_SESION = "ConsultaMedica/TraerSesion?consulta_id=";
+    /*Pagos*/
     public static final String URL_INSERTAR_PAGO = "Pago/Insertar/";
+    public static final String URL_GENERAR_CIP = "Pago/PE/GenerarCIP";
+
     public static final int OPCIONES_MENU=1;
     public static final int OPCIONES_ESPECIALIDADES=2;
     public static final int OPCION_CONSULTA_PROGRAMADA=3;
@@ -25,6 +30,9 @@ public class Constantes {
     public static final int OPCION_DATOS_PACIENTES=5;
     public static final int OPCION_PAGOS=6;
     public static final int OPCION_CONSULTA_ONLINE=7;
+    public static final int OPCION_MEDIO_PAGO=8;
+    public static final int OPCION_IZIPAY=9;
+    public static final int OPCION_PAGOEFECTIVO=10;
 
     public static final String API_KEY = "47436881";
 
@@ -41,6 +49,7 @@ public class Constantes {
     public static final String KEY_DETALLE_MEDICOS = "detalleMedicos";
     public static final String KEY_DATOS_PACIENTE = "detallePaciente";
     public static final String KEY_PAGO_CONSULTA = "detallePago";
+    public static final String KEY_OPCION_PAGO = "opcionPago";
     public static final String KEY_CONSULTA_PROGRAMADA = "detalleConsultaProgramada";
     public static final String KEY_CONSULTA_ONLINE = "detalleConsultaOnline";
 
@@ -49,6 +58,9 @@ public class Constantes {
     public static final String ID_HORARIOS_FRAGMENT = "HorariosFragment";
     public static final String ID_DATOS_PACIENTE_FRAGMENT = "DatosPacienteFragment";
     public static final String ID_PAGAR_CONSULTA_FRAGMENT = "PagarConsultaFragment";
+    public static final String ID_MEDIO_PAGO_FRAGMENT = "MedioPagoFragment";
+    public static final String ID_IZIPAY_FRAGMENT = "IzipayFragment";
+    public static final String ID_PAGOEEFECTIVO_FRAGMENT = "PagoefectivoFragment";
     public static final String ID_CONSULTA_PROGRAMADA_FRAGMENT = "ConsultaProgramadaFragment";
     public static final String ID_CONSULTA_ONLINE_FRAGMENT = "ConsultaOnlineFragment";
 

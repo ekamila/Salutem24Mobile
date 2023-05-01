@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import zisac.com.pe.salutem24.entity.AnfitrionEntity;
+import zisac.com.pe.salutem24.entity.CipPE;
+import zisac.com.pe.salutem24.entity.CipPEResponse;
 import zisac.com.pe.salutem24.entity.ConsultaEntity;
 import zisac.com.pe.salutem24.entity.ConsultaSesionEntity;
 import zisac.com.pe.salutem24.entity.CurriculumEntity;
@@ -815,5 +817,51 @@ public class URLDaoImplement implements URLDaoInterface {
         }
         return pago_id;
     }
+
+    @Override
+    public CipPEResponse getGenerarCip(CipPE cipPE) {
+        CipPEResponse cipPEResponse = null;
+        try {
+            String url = Constantes.HTTP_CABECERA + Constantes.URL_GENERAR_CIP;
+            JSONObject json = new JSONObject();
+            try {
+                cipPEResponse = new CipPEResponse();
+                json.put("id_usuario", cipPE.getId_usuario());
+                json.put("currency", cipPE.getCurrency());
+                json.put("amount", cipPE.getAmount());
+                json.put("transactionCode", cipPE.getTransactionCode());
+                json.put("adminEmail", cipPE.getAdminEmail());
+                json.put("dateExpiry", cipPE.getDateExpiry());
+                json.put("paymentConcept", cipPE.getPaymentConcept());
+                json.put("additionalData", cipPE.getAdditionalData());
+                json.put("userEmail", cipPE.getUserEmail());
+                json.put("userName", cipPE.getUserName());
+                json.put("userLastName", cipPE.getUserLastName());
+                json.put("userUbigeo", cipPE.getUserUbigeo());
+                json.put("userCountry", cipPE.getUserCountry());
+                json.put("userDocumentType", cipPE.getUserDocumentType());
+                json.put("userDocumentNumber", cipPE.getUserDocumentNumber());
+                json.put("userPhone", cipPE.getUserPhone());
+                json.put("userCodeCountry", cipPE.getUserCodeCountry());
+                json.put("fecha_turno", cipPE.getFecha_turno());
+            } catch (JSONException e) {
+                json = null;
+                e.printStackTrace();
+            }
+            String result = Utils.POST(url, json);
+            Log.e("getCip", result);
+            JSONObject CipResponse=null;
+            if(result!=null) {
+                if(!result.equals("")) {
+                    CipResponse = new JSONObject(result);
+                }
+            }
+        } catch (Exception e){
+            Log.e("ExcepGenerarCip","" + e.getMessage());
+            cipPEResponse = null;
+        }
+        return cipPEResponse;
+    }
+
 }
 

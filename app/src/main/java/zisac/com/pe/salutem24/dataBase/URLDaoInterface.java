@@ -5,6 +5,8 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import zisac.com.pe.salutem24.entity.CipPE;
+import zisac.com.pe.salutem24.entity.CipPEResponse;
 import zisac.com.pe.salutem24.entity.ConsultaEntity;
 import zisac.com.pe.salutem24.entity.ConsultaSesionEntity;
 import zisac.com.pe.salutem24.entity.CurriculumEntity;
@@ -31,4 +33,6 @@ public interface URLDaoInterface {
     ConsultaEntity getConsulta(String consultaId);
     ConsultaSesionEntity getConsultaSesion(String consultaId);
     int postInsertarPago(PagoEntity pago);
+    CipPEResponse getGenerarCip(CipPE cipPE);
+
 }

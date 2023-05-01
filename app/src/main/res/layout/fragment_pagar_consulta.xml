@@ -72,11 +72,12 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Datos de la tarjeta"
+                    android:text="Titular de la tarjeta"
                     android:textColor="@color/colorPrimary"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="10dp"
                     android:textSize="20dp"/>
+                <!--
                 <EditText
                     android:id="@+id/etNroTarjeta"
                     android:layout_width="match_parent"
@@ -133,47 +134,38 @@
                         android:elevation="2dp"
                         android:textColorHint="@color/colorHint"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:elevation="2dp"
-                    android:layout_gravity="center"
+                -->
+
+                <EditText
+                    android:id="@+id/etNombreTitular"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="2">
-                    <EditText
-                        android:id="@+id/etNombreTitular"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_marginRight="5dp"
-                        android:drawableLeft="@drawable/ic_usuario"
-                        android:background="@drawable/background_middle_editext"
-                        android:hint="Nombre"
-                        android:drawablePadding="8dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/colorBlack"
-                        android:paddingLeft="15dp"
-                        android:inputType="text"
-                        android:elevation="2dp"
-                        android:textColorHint="@color/colorHint"/>
-                    <EditText
-                        android:id="@+id/etApellidoTitular"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:drawableLeft="@drawable/ic_usuario"
-                        android:background="@drawable/background_middle_editext"
-                        android:hint="Apellido"
-                        android:drawablePadding="8dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/colorBlack"
-                        android:paddingLeft="15dp"
-                        android:inputType="text"
-                        android:elevation="2dp"
-                        android:textColorHint="@color/colorHint"/>
-                </LinearLayout>
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_usuario"
+                    android:background="@drawable/background_middle_editext"
+                    android:hint="Nombres"
+                    android:drawablePadding="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:paddingLeft="15dp"
+                    android:inputType="text"
+                    android:elevation="2dp"
+                    android:textColorHint="@color/colorHint"/>
+                <EditText
+                    android:id="@+id/etApellidoTitular"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_usuario"
+                    android:background="@drawable/background_middle_editext"
+                    android:hint="Apellidos"
+                    android:drawablePadding="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:paddingLeft="15dp"
+                    android:inputType="text"
+                    android:elevation="2dp"
+                    android:textColorHint="@color/colorHint"/>
                 <EditText
                     android:id="@+id/etCorreoTitular"
                     android:layout_width="match_parent"
@@ -189,17 +181,33 @@
                     android:inputType="text"
                     android:elevation="2dp"
                     android:textColorHint="@color/colorHint" />
+                <EditText
+                    android:id="@+id/etDireccionTitular"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@drawable/ic_pin"
+                    android:background="@drawable/background_middle_editext"
+                    android:hint="Dirección"
+                    android:drawablePadding="8dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:paddingLeft="15dp"
+                    android:inputType="text"
+                    android:elevation="2dp"
+                    android:textColorHint="@color/colorHint" />
+                <!--android:id="@+id/btn_pagar"-->
                 <Button
                     android:shadowColor="@color/colorOrangeDark"
                     android:shadowRadius="10"
                     android:shadowDx="2"
                     android:shadowDy="5"
-                    android:id="@+id/btn_pagar"
+                    android:id="@+id/btn_continuar_ip"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:text="Pagar S/. 50.00"
+                    android:text="Continuar"
                     android:textColor="#fff"
                     android:layout_marginBottom="30dp"
                     android:background="@drawable/boton_primary_sm" />

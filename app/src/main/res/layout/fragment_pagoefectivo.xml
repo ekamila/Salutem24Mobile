@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.PagoefectivoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/toolbar"></include>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pe_titulo"
+                android:textSize="25dp"
+                android:textStyle="italic"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pe_pago1"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pe_detalle1"
+                android:justificationMode="inter_word"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pe_pago2"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pe_detalle2"
+                android:justificationMode="inter_word"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:gravity="bottom">
+            <Button
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowRadius="10"
+                android:shadowDx="2"
+                android:shadowDy="5"
+                android:id="@+id/btn_continuar_pe"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continuar"
+                android:textColor="#fff"
+                android:background="@drawable/boton_primary_sm" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

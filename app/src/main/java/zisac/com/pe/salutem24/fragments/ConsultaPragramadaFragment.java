@@ -443,6 +443,7 @@ public class ConsultaPragramadaFragment extends Fragment {
                     ArrayList<ConsultaEntity> datos = new ArrayList<>();
                     consulta.setConsultaInmediata(Constantes.RESERVA_NORMAL);
                     datos.add(consulta);
+
                     notifyOptionSelected(Constantes.OPCION_CONSULTA_ONLINE, datos);
                     //Log.i("value" , datos.get(0).getConsultaId());
                 }

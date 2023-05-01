@@ -1,5 +1,6 @@
 package zisac.com.pe.salutem24.salutem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -13,9 +14,12 @@ import zisac.com.pe.salutem24.fragments.ConsultaOnlineFragment;
 import zisac.com.pe.salutem24.fragments.ConsultaPragramadaFragment;
 import zisac.com.pe.salutem24.fragments.DatosPacienteFragment;
 import zisac.com.pe.salutem24.fragments.HorariosFragment;
+import zisac.com.pe.salutem24.fragments.IzipayFragment;
+import zisac.com.pe.salutem24.fragments.MedioPagoFragment;
 import zisac.com.pe.salutem24.fragments.MenuFragment;
 import zisac.com.pe.salutem24.fragments.OpcionesEspecialidadFragment;
 import zisac.com.pe.salutem24.fragments.PagarConsultaFragment;
+import zisac.com.pe.salutem24.fragments.PagoefectivoFragment;
 import zisac.com.pe.salutem24.utils.Constantes;
 import zisac.com.pe.salutem24.utils.Utils;
 
@@ -23,6 +27,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.facebook.react.modules.core.PermissionListener;
@@ -40,6 +47,8 @@ public class PrincipalActivity extends AppCompatActivity
         PagarConsultaFragment.OnClickOpcionFragmento,
         ConsultaPragramadaFragment.OnClickOpcionFragmento,
         ConsultaOnlineFragment.OnClickOpcionFragmento,
+        MedioPagoFragment.OnClickOpcionFragmento,
+        IzipayFragment.OnClickOpcionFragmento,
         JitsiMeetActivityInterface {
 
     private MenuFragment menuFragment;
@@ -47,6 +56,9 @@ public class PrincipalActivity extends AppCompatActivity
     private HorariosFragment horariosFragment;
     private DatosPacienteFragment datosPacienteFragment;
     private PagarConsultaFragment pagarConsultaFragment;
+    private MedioPagoFragment medioPagoFragment;
+    private IzipayFragment izipayFragment;
+    private PagoefectivoFragment pagoefectivoFragment;
     private ConsultaPragramadaFragment consultaPragramadaFragment;
     private ConsultaOnlineFragment consultaOnlineFragment;
     private int caseOption=0;
@@ -58,6 +70,8 @@ public class PrincipalActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        /*Toolbar*/
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         Bundle bundle = getIntent().getExtras();
 
@@ -85,6 +99,10 @@ public class PrincipalActivity extends AppCompatActivity
             case Constantes.OPCION_PAGOS: mostrarPago(datos); break;
             case Constantes.OPCION_CONSULTA_PROGRAMADA: mostrarConsultaProgramada(datos); break;
             case Constantes.OPCION_CONSULTA_ONLINE: mostrarConsultaOnline(datos); break;
+            case Constantes.OPCION_MEDIO_PAGO: mostrarMedioPago(datos); break;
+            case Constantes.OPCION_IZIPAY: mostrarIzipay(); break;
+            case Constantes.OPCION_PAGOEFECTIVO: mostrarPagoEfectivo(); break;
+
         }
     }
 
@@ -175,6 +193,33 @@ public class PrincipalActivity extends AppCompatActivity
         insertarFragmentoOpcion(pagarConsultaFragment, Constantes.ID_PAGAR_CONSULTA_FRAGMENT);
     }
 
+    private void mostrarMedioPago(ArrayList datos){
+        Bundle arguments =new Bundle();
+        arguments.putParcelableArrayList(Constantes.KEY_OPCION_PAGO, datos);
+        arguments.putParcelable(Constantes.USUARIO, usuario);
+        medioPagoFragment = new MedioPagoFragment();
+        medioPagoFragment.setArguments(arguments);
+        insertarFragmentoOpcion(medioPagoFragment, Constantes.ID_MEDIO_PAGO_FRAGMENT);
+    }
+
+    private void mostrarIzipay(){
+        Bundle arguments =new Bundle();
+        //arguments.putParcelableArrayList(Constantes.KEY_OPCION_PAGO, datos);
+        arguments.putParcelable(Constantes.USUARIO, usuario);
+        izipayFragment = new IzipayFragment();
+        izipayFragment.setArguments(arguments);
+        insertarFragmentoOpcion(izipayFragment, Constantes.ID_IZIPAY_FRAGMENT);
+    }
+
+    private void mostrarPagoEfectivo(){
+        Bundle arguments =new Bundle();
+        //arguments.putParcelableArrayList(Constantes.KEY_OPCION_PAGO, datos);
+        arguments.putParcelable(Constantes.USUARIO, usuario);
+        pagoefectivoFragment = new PagoefectivoFragment();
+        pagoefectivoFragment.setArguments(arguments);
+        insertarFragmentoOpcion(pagoefectivoFragment, Constantes.ID_PAGOEEFECTIVO_FRAGMENT);
+    }
+
     private void mostrarConsultaProgramada(ArrayList datos){
         Bundle arguments =new Bundle();
         arguments.putParcelableArrayList(Constantes.KEY_CONSULTA_PROGRAMADA, datos);
@@ -243,5 +288,20 @@ public class PrincipalActivity extends AppCompatActivity
     public void requestPermissions(String[] strings, int i, PermissionListener permissionListener) {
         Log.e("1", "");
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.items_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.atras:
 
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

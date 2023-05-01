@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -22,6 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -77,6 +80,8 @@ public class DatosPacienteFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         turno = getArguments().getParcelableArrayList(Constantes.KEY_DATOS_PACIENTE);
+        //Log.i("Turno", String.valueOf(turno));
+        //Log.i("Turno detalle", turno.get(0).getTurnoDetalleEntity().getTurnoDetalleId());
         usuario = getArguments().getParcelable(Constantes.USUARIO);
         if(savedInstanceState!=null){
             turno = savedInstanceState.getParcelableArrayList(Constantes.KEY_DATOS_PACIENTE);
@@ -152,7 +157,7 @@ public class DatosPacienteFragment extends Fragment {
                     datosPaciente.setCelular(nroCelular.getText().toString());
                     datosPaciente.setSexo(selectedSexoId.equals("1") ? "M" : "F");
                     datosPaciente.setFechaNacimiento(et_fecha.getText().toString());
-                    Log.e("et_Fec", "selectedPacienteId_" + selectedPacienteId);
+                    Log.e("et_Fec", String.valueOf(datosPaciente));
                     turno.get(0).setPaciente(datosPaciente);
 
                     if (!Utils.redOrWifiActivo(getActivity())) {
@@ -420,8 +425,15 @@ public class DatosPacienteFragment extends Fragment {
                 if(paciente.getIsSuccess() != null) {
                     if (paciente.getIsSuccess().equals("true")) {
                         turno.get(0).getPaciente().setPacienteId(paciente.getPacienteId());
-                        notifyOptionSelected(Constantes.OPCION_PAGOS, turno);
+                        //notifyOptionSelected(Constantes.OPCION_PAGOS, turno);
+                        notifyOptionSelected(Constantes.OPCION_MEDIO_PAGO, turno);
 
+                        SharedPreferences preferences = getActivity().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        Gson gson = new Gson();
+                        String json = gson.toJson(turno);
+                        editor.putString("turno", json);
+                        editor.commit();
                         Toast.makeText(getContext(), paciente.getMessage(), Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getContext(), "No se pudo insertar, intente mas tarde", Toast.LENGTH_LONG).show();

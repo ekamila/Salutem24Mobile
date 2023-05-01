@@ -3,7 +3,10 @@ package zisac.com.pe.salutem24.fragments;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -23,8 +26,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -37,6 +43,8 @@ import zisac.com.pe.salutem24.entity.PacienteEntity;
 import zisac.com.pe.salutem24.entity.PagoEntity;
 import zisac.com.pe.salutem24.entity.TurnoEntity;
 import zisac.com.pe.salutem24.entity.UsuarioEntity;
+import zisac.com.pe.salutem24.salutem.LoginActivity;
+import zisac.com.pe.salutem24.salutem.PruebaActivity;
 import zisac.com.pe.salutem24.utils.Constantes;
 import zisac.com.pe.salutem24.utils.DateInputMask;
 import zisac.com.pe.salutem24.utils.StringUtils;
@@ -53,8 +61,11 @@ public class PagarConsultaFragment extends Fragment {
     private ProgressDialog popup;
     private UsuarioEntity usuario;
     private PacienteEntity paciente;
-    private EditText et_fecha, etNroTarjeta, etCodigoSeguridad, etNombreTitular, etApellidoTitular, etCorreoTitular;
-    private Button btn_pagar;
+    //private EditText et_fecha, etNroTarjeta, etCodigoSeguridad,
+    private EditText etNombreTitular, etApellidoTitular, etCorreoTitular, etDireccionTitular;
+    //private Button btn_pagar;
+    private Button btn_continuar_ip;
+
 
     public interface OnClickOpcionFragmento{
         void OnClickOpcionFragmento(int opcion, ArrayList datos);
@@ -91,20 +102,24 @@ public class PagarConsultaFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        etNroTarjeta = rootView.findViewById( R.id.etNroTarjeta );
-        et_fecha = rootView.findViewById( R.id.et_fecha );
-        etCodigoSeguridad = rootView.findViewById(R.id.etCodigoSeguridad);
+        //etNroTarjeta = rootView.findViewById( R.id.etNroTarjeta );
+        //et_fecha = rootView.findViewById( R.id.et_fecha );
+        //etCodigoSeguridad = rootView.findViewById(R.id.etCodigoSeguridad);
         etNombreTitular = rootView.findViewById(R.id.etNombreTitular);
         etApellidoTitular = rootView.findViewById(R.id.etApellidoTitular);
         etCorreoTitular = rootView.findViewById(R.id.etCorreoTitular);
-        btn_pagar = rootView.findViewById(R.id.btn_pagar);
-        et_fecha = rootView.findViewById(R.id.et_fecha);
-        new DateInputMask(et_fecha);
+        etDireccionTitular = rootView.findViewById(R.id.etDireccionTitular);
+        //btn_pagar = rootView.findViewById(R.id.btn_pagar);
+        btn_continuar_ip = rootView.findViewById(R.id.btn_continuar_ip);
+        //et_fecha = rootView.findViewById(R.id.et_fecha);
+        //new DateInputMask(et_fecha);
         String monto = turno.get(0).getImporte();
 
-        btn_pagar.setText("Pagar S/. "+monto);
+        //btn_pagar.setText("Pagar S/. "+monto);
+        btn_continuar_ip.setText("Pagar S/. "+monto);
 
-        btn_pagar.setOnClickListener(new View.OnClickListener() {
+        //btn_pagar.setOnClickListener(new View.OnClickListener() {
+        btn_continuar_ip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //validarCampos();
@@ -113,12 +128,16 @@ public class PagarConsultaFragment extends Fragment {
                     return ;
                 }
 
-                crearPopUpEspera();
-                String pacienteId = turno.get(0).getPaciente().getPacienteId();
-                String turnoDetalleId = turno.get(0).getTurnoDetalleEntity().getTurnoDetalleId();
-                String inmediata = turno.get(0).getInmediata();
-                InsertarConsulta insertConsulta = new InsertarConsulta();
-                insertConsulta.execute(pacienteId, turnoDetalleId, inmediata);
+                SharedPreferences prefs = getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor;
+                editor = prefs.edit();
+                editor.putString("nombres", etNombreTitular.getText().toString());
+                editor.putString("apellidos", etApellidoTitular.getText().toString());
+                editor.putString("direccion", etDireccionTitular.getText().toString());
+                editor.putString("correo", etCorreoTitular.getText().toString());
+                editor.commit();
+
+                notifyOptionSelected(Constantes.OPCION_IZIPAY, null);
             }
         });
     }

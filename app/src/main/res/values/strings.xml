@@ -26,6 +26,20 @@
         <item>Meza Caballero Julio</item>
         <item>Santacruz Medina Fernando</item>
     </string-array>
+    <string name="title_activity_prueba">PruebaActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <!--Pago Efectivo-->
+    <string name="pregunta">¿Cómo funciona?</string>
+    <string name="pe_titulo">Genera tu código CIP y págalo a través de:</string>
+    <string name="pe_pago1">Banca Móvil / Internet:</string>
+    <string name="pe_detalle1">Paga en BBVA, BCP, Interbank, Scotiabank, BanBif, Caja Arequipa y Banco Pichincha, a través de la opción pago de servicios.</string>
+    <string name="pe_pago2">Agentes y Bodegas:</string>
+    <string name="pe_detalle2">Deposita en BBVA, BCP, Interbank, Scotiabank, BanBif, Western Union, Tambo+, Kasnet, Ya Ganaste, Red Digital, Agente Niubiz, MoneyGram, Caja Arequipa, Disashop, Cellpower.</string>
+
     <!--<string-array name="tarjetas">
         <item>Marca</item>
         <item>Visa</item>
